@@ -1,5 +1,6 @@
 import React from 'react';
 import Todo from './Todo';
+import TodoInput from './TodoInput';
 import './App.css';
 
 function App() {
@@ -11,9 +12,25 @@ function App() {
     { text: "Pick up groceries" },
     { text: "Complete Todo App on Frontend Mentor" }
   ]);
+  
+  const addTodo = text => {
+    const newTodos = [...todos, { text }];
+    setTodos(newTodos);
+  };
 
   return (
-    <div>App</div>
+    <div className="app">
+      <div className="todo-list">
+        {todos.map((todo, index) => (
+          <Todo
+            key={index}
+            index={index}
+            todo={todo}
+          />
+        ))}
+      </div>
+      <TodoInput addTodo={addTodo} />
+    </div>
   );
 }
 
