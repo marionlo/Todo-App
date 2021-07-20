@@ -1,6 +1,7 @@
 import React from 'react';
 import Todo from './Todo';
 import TodoInput from './TodoInput';
+import Header from './Header';
 import './App.css';
 
 function App() {
@@ -29,7 +30,8 @@ function App() {
   };
 
   return (
-    <div className="app">
+    <div className="main">
+      <Header addTodo={addTodo}/>
       <div className="todo-list">
         {todos.map((todo, index) => (
           <Todo
@@ -39,7 +41,6 @@ function App() {
           />
         ))}
       </div>
-      <TodoInput addTodo={addTodo} />
     </div>
   );
 }

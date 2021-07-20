@@ -11,10 +11,10 @@ function TodoInput({ addTodo }) {
     };
   
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} id="submit-form">
         <input
           type="text"
-          className="input"
+          className="todo-input" id="new-todo" placeholder="Create a new todo..." minlength="1" maxlength="300"
           value={value}
           onChange={e => setValue(e.target.value)}
         />
