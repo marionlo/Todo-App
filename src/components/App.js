@@ -28,6 +28,7 @@ function App() {
   const addTodo = text => {
     const newTodos = [...todos, { text }];
     setTodos(newTodos);
+    
   };
 
   return (
@@ -42,7 +43,7 @@ function App() {
           />
         ))}
       </ul>
-      <Footer />
+      <Footer todos={todos}/>
     </div>
   );
 }

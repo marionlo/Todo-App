@@ -1,11 +1,13 @@
 import React from 'react';
 
 
-function Footer() {
+function Footer({todos}) {
+    console.log(todos.length);
+    const todosNumber = todos.length
     return (
     <div>
         <div className="items-menu">
-            <div className="items-left" id="items-left"></div>
+            <div className="items-left" id="items-left"> {todosNumber} items left</div>
             <div className="items-sort">
             <div className="items-all">All</div>
             <div className="items-active">Active</div>
