@@ -8,24 +8,19 @@ function App() {
   
   const [todos, setTodos] = React.useState([
     { text: "Jog around the park 3x",
-      isCompleted: false,
-      id: 0 
+      isCompleted: false, 
     },
     { text: "10 minutes meditation",
-      isCompleted: false,
-      id: 1  
+      isCompleted: false, 
     },
     { text: "Read for one hour",
       isCompleted: false,
-      id: 2 
     },
     { text: "Pick up groceries",
       isCompleted: false,
-      id: 3 
     },
     { text: "Complete Todo App on Frontend Mentor",
       isCompleted: false, 
-      id: 4
     },
   ]);
   
@@ -41,6 +36,18 @@ function App() {
     setTodos([...todos])
   }
 
+  const handleCompleted = index => {
+    const newTodos = [...todos];
+    if(newTodos[index].isCompleted === false) {
+      newTodos[index].isCompleted = true
+    } else {
+      newTodos[index].isCompleted = false
+    }
+    setTodos(newTodos);
+    console.log(newTodos)
+  };
+
+
   return (
     <div className="main">
       <Header addTodo={addTodo}/>
@@ -48,10 +55,12 @@ function App() {
         {todos.map((todo, index) => (
           <Todo
             handleRemoveItem={handleRemoveItem}
+            todos={todos}
+            setTodos={setTodos}
             key={index}
             index={index}
             todo={todo}
-            
+            handleCompleted={handleCompleted}
           />
         ))}
       </ul>
