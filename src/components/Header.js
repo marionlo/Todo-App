@@ -1,5 +1,7 @@
 import React from 'react';
 import TodoInput from './TodoInput';
+import sun from '../img/icon-sun.svg'
+import moon from '../img/icon-moon.svg'
 
 function Header({addTodo}) {
     return (
@@ -8,8 +10,8 @@ function Header({addTodo}) {
         <div className="nav">
           <h1 className="logo">TODO</h1>
           <button className="site-mode">
-            <img src="./img/icon-sun.svg" alt=""/>
-            <img src="./img/icon-moon.svg" className="hidden" alt=""/>
+            <img src={sun} alt=""/>
+            <img src={moon} className="hidden" alt=""/>
           </button>
         </div>
         

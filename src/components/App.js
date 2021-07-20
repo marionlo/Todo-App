@@ -2,6 +2,7 @@ import React from 'react';
 import Todo from './Todo';
 import TodoInput from './TodoInput';
 import Header from './Header';
+import Footer from './Footer';
 import './App.css';
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
           />
         ))}
       </ul>
+      <Footer />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import cross from '../img/icon-cross.svg'
 
 function Todo({ todo }) {
    
@@ -8,7 +9,7 @@ function Todo({ todo }) {
       </button>
         <div class="todo-input">{todo.text}</div>
         <button class="btn-delete">
-          <img src="img/icon-cross.svg" alt=""/>
+          <img src={cross} alt=""/>
         </button>
     </li>
     );
