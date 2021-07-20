@@ -25,11 +25,16 @@ function App() {
     },
   ]);
   
-  const addTodo = text => {
-    const newTodos = [...todos, { text }];
+  const addTodo = (text, isCompleted=false) => {
+    const newTodos = [...todos, { text, isCompleted }];
     setTodos(newTodos);
     
   };
+
+  const handleRemoveItem = (e) => {
+    const text = e.target.getAttribute("name")
+    setTodos(todos.filter(todo => todo.text !== text));
+  }
 
   return (
     <div className="main">
@@ -37,6 +42,7 @@ function App() {
       <ul className="todo-list"  id="todo-list">
         {todos.map((todo, index) => (
           <Todo
+            handleRemoveItem={handleRemoveItem}
             key={index}
             index={index}
             todo={todo}
