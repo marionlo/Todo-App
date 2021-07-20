@@ -1,18 +1,18 @@
 import React from 'react';
 import cross from '../img/icon-cross.svg'
 
-function Todo({ todo, handleRemoveItem }) {
+function Todo({ todo, index, handleRemoveItem, changeStatusItem }) {
 
 
 
    
     return (
-      <li class="todo-item"  >
-      <button class="todo-circle button-check">
+      <li className="todo-item">
+      <button className="todo-circle button-check" name={todo.isSelected} onClick={changeStatusItem}>
       </button>
-        <div class="todo-input">{todo.text}</div>
-        <button class="btn-delete" >
-          <img src={cross} alt="" name={todo.text} onClick={handleRemoveItem}/>
+        <div className="todo-input">{todo.text}</div>
+        <button className="btn-delete" >
+          <img src={cross} alt="" onClick={handleRemoveItem}/>
         </button>
     </li>
     );

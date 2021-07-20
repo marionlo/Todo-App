@@ -14,7 +14,7 @@ function TodoInput({ addTodo }) {
       <form onSubmit={handleSubmit} id="submit-form">
         <input
           type="text"
-          className="todo-input" id="new-todo" placeholder="Create a new todo..." minlength="1" maxlength="300"
+          className="todo-input" id="new-todo" placeholder="Create a new todo..." minLength="1" maxLength="300"
           value={value}
           onChange={e => setValue(e.target.value)}
         />

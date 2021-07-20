@@ -2,7 +2,7 @@ import React from 'react';
 
 
 function Footer({todos}) {
-    console.log(todos.length);
+    
     const todosNumber = todos.length
     return (
     <div>

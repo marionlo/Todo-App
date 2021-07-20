@@ -1,6 +1,5 @@
 import React from 'react';
 import Todo from './Todo';
-import TodoInput from './TodoInput';
 import Header from './Header';
 import Footer from './Footer';
 import './App.css';
@@ -9,31 +8,37 @@ function App() {
   
   const [todos, setTodos] = React.useState([
     { text: "Jog around the park 3x",
-      isCompleted: false 
+      isCompleted: false,
+      id: 0 
     },
     { text: "10 minutes meditation",
-      isCompleted: false 
+      isCompleted: false,
+      id: 1  
     },
     { text: "Read for one hour",
-      isCompleted: false 
+      isCompleted: false,
+      id: 2 
     },
     { text: "Pick up groceries",
-      isCompleted: false 
+      isCompleted: false,
+      id: 3 
     },
     { text: "Complete Todo App on Frontend Mentor",
-      isCompleted: false 
+      isCompleted: false, 
+      id: 4
     },
   ]);
   
   const addTodo = (text, isCompleted=false) => {
-    const newTodos = [...todos, { text, isCompleted }];
+    const newTodos = [...todos, { text, isCompleted}];
     setTodos(newTodos);
     
   };
-
+  
   const handleRemoveItem = (e) => {
-    const text = e.target.getAttribute("name")
-    setTodos(todos.filter(todo => todo.text !== text));
+    const {id} = e.target.parentElement;
+    todos.splice(id, 1)
+    setTodos([...todos])
   }
 
   return (
@@ -46,12 +51,14 @@ function App() {
             key={index}
             index={index}
             todo={todo}
+            
           />
         ))}
       </ul>
       <Footer todos={todos}/>
     </div>
   );
+  
 }
 
 export default App;
