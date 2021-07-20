@@ -32,7 +32,7 @@ function App() {
   return (
     <div className="main">
       <Header addTodo={addTodo}/>
-      <div className="todo-list">
+      <ul className="todo-list"  id="todo-list">
         {todos.map((todo, index) => (
           <Todo
             key={index}
@@ -40,7 +40,7 @@ function App() {
             todo={todo}
           />
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
