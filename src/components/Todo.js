@@ -6,7 +6,7 @@ function Todo({ todo, index, handleRemoveItem, handleCompleted }) {
   
     return (
       <li className="todo-item">
-      <button className="todo-circle button-check" name={todo.isSelected} onClick={() => handleCompleted(index)}>
+      <button className={todo.isCompleted ? 'todo-circle button-check-completed' : 'todo-circle button-check'} onClick={() => handleCompleted(index)}>
       </button>
         <div className="todo-input">{todo.text}</div>
         <button className="btn-delete" >

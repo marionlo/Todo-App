@@ -34,6 +34,7 @@ function App() {
     const {id} = e.target.parentElement;
     todos.splice(id, 1)
     setTodos([...todos])
+    console.log(todos)
   }
 
   const handleCompleted = index => {
@@ -44,9 +45,14 @@ function App() {
       newTodos[index].isCompleted = false
     }
     setTodos(newTodos);
-    console.log(newTodos)
+    console.log(newTodos.filter(Boolean).length)
+    
   };
 
+  const isCompletedCount = () => {
+    const completedCount = todos.filter(function(s) { return s.isCompleted; }).length;
+     return completedCount
+  }
 
   return (
     <div className="main">
@@ -64,7 +70,7 @@ function App() {
           />
         ))}
       </ul>
-      <Footer todos={todos}/>
+      <Footer todos={todos} isCompletedCount={isCompletedCount}/>
     </div>
   );
   

@@ -339,8 +339,7 @@ body {
 .button-check {
   background: transparent;
 }
-
-.button-check:target {
+.button-check-completed {
   background: linear-gradient(
     to right,
     hsl(192, 100%, 67%),
