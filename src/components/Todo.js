@@ -10,7 +10,7 @@ function Todo({ todo, index, handleRemoveItem, handleCompleted }) {
       </button>
         <div className={todo.isCompleted ? 'todo-input todo-input-completed' : 'todo-input'}>{todo.text}</div>
         <button className="btn-delete" >
-          <img src={cross} alt="" onClick={handleRemoveItem}/>
+          <img src={cross} alt="" onClick={() => handleRemoveItem(index)}/>
         </button>
     </li>
     );

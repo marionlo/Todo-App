@@ -40,11 +40,10 @@ function App() {
     
   };
   
-  const handleRemoveItem = (e) => {
-    const {id} = e.target.parentElement;
-    todos.splice(id, 1)
-    setTodos([...todos])
-    console.log(todos)
+  const handleRemoveItem = (index) => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
   }
 
   const handleCompleted = index => {
@@ -55,6 +54,7 @@ function App() {
       newTodos[index].isCompleted = false
     }
     setTodos(newTodos); 
+    console.log(newTodos)
   };
 
   const isCompletedCount = () => {
@@ -68,41 +68,6 @@ function App() {
     });  
     
   }
-
-  // const ShowCompleted = () => {
-  //   const numberOfCompletedTodo = todos.filter(function(s) { return s.isCompleted; }).length;
-
-  //   if (numberOfCompletedTodo >= 1) {
-  //     setTodos(todos => {
-  //       return todos.filter(function(s) { return s.isCompleted; });
-  //     });
-  //     console.log(todos)
-  //   } 
-   
-  // }
-
-  // const ShowActive = () => {  
-  //   const numberOfActiveTodo = todos.filter(function(s) { return !s.isCompleted; }).length;
-  //   if (numberOfActiveTodo >= 1) {
-  //     setTodos(todos => {
-  //       return todos.filter(function(s) { return !s.isCompleted; });   
-  //     });
-  //     console.log(todos)
-  //   } 
-  // }
-
-
-  // const ShowCompleted = () => {
-  //   const newTodos = todos.filter((todo) => todo.isCompleted); 
-  //   console.log(newTodos)
-
-  // }
-
-  // const ShowActive = () => {  
-  //   const newTodos = todos.filter((todo) => !todo.isCompleted); 
-  //   console.log(newTodos)
-
-  // }
   
   const filterList = FILTER_NAMES.map(name => (
 
