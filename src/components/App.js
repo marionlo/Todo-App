@@ -44,9 +44,7 @@ function App() {
     } else {
       newTodos[index].isCompleted = false
     }
-    setTodos(newTodos);
-    console.log(newTodos.filter(Boolean).length)
-    
+    setTodos(newTodos); 
   };
 
   const isCompletedCount = () => {
@@ -55,9 +53,11 @@ function App() {
   }
 
   const handleRemoveCompleted = () => {
-    const isCompleted = todos.filter(function(s) { return s.isCompleted; })
-    todos.splice(isCompleted, isCompleted.length)
-    setTodos([...todos])
+    setTodos(todos => {
+      return todos.filter(function(s) { return !s.isCompleted; });
+    });
+
+    
     
   }
 

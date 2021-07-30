@@ -399,3 +399,10 @@ body {
 .todo-item:hover .btn-delete {
   transform: scale(1);
 }
+
+.items-all,
+.items-active,
+.items-clear,
+.items-completed {
+  cursor: pointer;
+}
