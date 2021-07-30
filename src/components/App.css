@@ -377,8 +377,13 @@ body {
 
 .items-sort {
   display: flex;
-  width: 150px;
   justify-content: space-between;
+}
+
+.items-menu-center {
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor: pointer;
 }
 
 .items-reorder {

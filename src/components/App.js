@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Todo from './Todo';
 import Header from './Header';
 import Footer from './Footer';
 import './App.css';
+import FilterButton from './FilterButton';
+
+const FILTER_MAP = {
+  All: () => true,
+  Active: todos => !todos.isCompleted,
+  Completed: todos => todos.isCompleted
+};
+
+const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 function App() {
+  const [filter, setFilter] = useState('All');
   
   const [todos, setTodos] = React.useState([
     { text: "Jog around the park 3x",
@@ -55,27 +65,62 @@ function App() {
   const handleRemoveCompleted = () => {
     setTodos(todos => {
       return todos.filter(function(s) { return !s.isCompleted; });
-    });    
+    });  
+    
   }
 
-  const ShowCompleted = () => {
-    const numberOfCompletedTodo = todos.filter(function(s) { return s.isCompleted; }).length;
-    if (numberOfCompletedTodo >= 1) {
-      setTodos(todos => {
-        return todos.filter(function(s) { return s.isCompleted; });
-      });    
-    } else {
-      return null;
-    }
+  // const ShowCompleted = () => {
+  //   const numberOfCompletedTodo = todos.filter(function(s) { return s.isCompleted; }).length;
+
+  //   if (numberOfCompletedTodo >= 1) {
+  //     setTodos(todos => {
+  //       return todos.filter(function(s) { return s.isCompleted; });
+  //     });
+  //     console.log(todos)
+  //   } 
    
-  }
+  // }
+
+  // const ShowActive = () => {  
+  //   const numberOfActiveTodo = todos.filter(function(s) { return !s.isCompleted; }).length;
+  //   if (numberOfActiveTodo >= 1) {
+  //     setTodos(todos => {
+  //       return todos.filter(function(s) { return !s.isCompleted; });   
+  //     });
+  //     console.log(todos)
+  //   } 
+  // }
+
+
+  // const ShowCompleted = () => {
+  //   const newTodos = todos.filter((todo) => todo.isCompleted); 
+  //   console.log(newTodos)
+
+  // }
+
+  // const ShowActive = () => {  
+  //   const newTodos = todos.filter((todo) => !todo.isCompleted); 
+  //   console.log(newTodos)
+
+  // }
+  
+  const filterList = FILTER_NAMES.map(name => (
+
+    <FilterButton
+      key={name}
+      name={name}
+      isPressed={name === filter}
+      setFilter={setFilter}
+    />
+
+  ));
 
 
   return (
     <div className="main">
       <Header addTodo={addTodo}/>
       <ul className="todo-list"  id="todo-list">
-        {todos.map((todo, index) => (
+        {todos.filter(FILTER_MAP[filter]).map((todo, index) => (
           <Todo
             handleRemoveItem={handleRemoveItem}
             todos={todos}
@@ -84,11 +129,13 @@ function App() {
             index={index}
             todo={todo}
             handleCompleted={handleCompleted}
-            
+
           />
         ))}
       </ul>
-      <Footer todos={todos} isCompletedCount={isCompletedCount} handleRemoveCompleted={handleRemoveCompleted} ShowCompleted={ShowCompleted}/>
+      <div className="items-sort">
+      </div>
+      <Footer todos={todos} isCompletedCount={isCompletedCount} handleRemoveCompleted={handleRemoveCompleted} filterList={filterList} />
     </div>
   );
   

@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function Footer({todos, isCompletedCount, handleRemoveCompleted, ShowCompleted}) {
+function Footer({todos, isCompletedCount, handleRemoveCompleted, filterList }) {
     
     
     const todosNumber = todos.length;
@@ -14,9 +14,7 @@ function Footer({todos, isCompletedCount, handleRemoveCompleted, ShowCompleted})
         <div className="items-menu">
             <div className="items-left" id="items-left"> {newNumber} items left</div>
             <div className="items-sort">
-            <div className="items-all">All</div>
-            <div className="items-active">Active</div>
-            <div className="items-completed" onClick={() => ShowCompleted()}>Completed</div>
+            {filterList}
         </div>
             <div className="items-clear" onClick={() => handleRemoveCompleted()}>Clear Completed</div>
     </div>
