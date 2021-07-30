@@ -49,17 +49,27 @@ function App() {
 
   const isCompletedCount = () => {
     const completedCount = todos.filter(function(s) { return s.isCompleted; }).length;
-     return completedCount
+     return completedCount;
   }
 
   const handleRemoveCompleted = () => {
     setTodos(todos => {
       return todos.filter(function(s) { return !s.isCompleted; });
-    });
-
-    
-    
+    });    
   }
+
+  const ShowCompleted = () => {
+    const numberOfCompletedTodo = todos.filter(function(s) { return s.isCompleted; }).length;
+    if (numberOfCompletedTodo >= 1) {
+      setTodos(todos => {
+        return todos.filter(function(s) { return s.isCompleted; });
+      });    
+    } else {
+      return null;
+    }
+   
+  }
+
 
   return (
     <div className="main">
@@ -78,7 +88,7 @@ function App() {
           />
         ))}
       </ul>
-      <Footer todos={todos} isCompletedCount={isCompletedCount} handleRemoveCompleted={handleRemoveCompleted}/>
+      <Footer todos={todos} isCompletedCount={isCompletedCount} handleRemoveCompleted={handleRemoveCompleted} ShowCompleted={ShowCompleted}/>
     </div>
   );
   
