@@ -54,6 +54,13 @@ function App() {
      return completedCount
   }
 
+  const handleRemoveCompleted = () => {
+    const isCompleted = todos.filter(function(s) { return s.isCompleted; })
+    todos.splice(isCompleted, isCompleted.length)
+    setTodos([...todos])
+    
+  }
+
   return (
     <div className="main">
       <Header addTodo={addTodo}/>
@@ -67,10 +74,11 @@ function App() {
             index={index}
             todo={todo}
             handleCompleted={handleCompleted}
+            
           />
         ))}
       </ul>
-      <Footer todos={todos} isCompletedCount={isCompletedCount}/>
+      <Footer todos={todos} isCompletedCount={isCompletedCount} handleRemoveCompleted={handleRemoveCompleted}/>
     </div>
   );
   

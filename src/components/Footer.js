@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function Footer({todos, isCompletedCount}) {
+function Footer({todos, isCompletedCount, handleRemoveCompleted}) {
     
     
     const todosNumber = todos.length;
@@ -18,7 +18,7 @@ function Footer({todos, isCompletedCount}) {
             <div className="items-active">Active</div>
             <div className="items-completed">Completed</div>
         </div>
-            <div className="items-clear">Clear Completed</div>
+            <div className="items-clear" onClick={() => handleRemoveCompleted()}>Clear Completed</div>
     </div>
         <section className="items-reorder">
             <div>Drag and drop to reorder list</div>

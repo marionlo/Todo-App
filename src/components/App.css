@@ -267,6 +267,8 @@ select:focus {
   outline: none;
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+
 body {
   font-family: "Josefin Sans", sans-serif;
   margin: 0 auto;
@@ -318,6 +320,12 @@ body {
   margin-left: 25px;
   font-size: 18px;
   width: 420px;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.todo-input-completed {
+  text-decoration: line-through;
+  color: hsl(233, 11%, 84%);
 }
 
 .todo-list {
