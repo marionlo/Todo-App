@@ -18,25 +18,45 @@ function App() {
   
   const [todos, setTodos] = React.useState([
     { text: "Jog around the park 3x",
-      isCompleted: false, 
+      isCompleted: true, 
+      id: 1
     },
     { text: "10 minutes meditation",
-      isCompleted: false, 
+      isCompleted: true, 
+      id: 2
     },
     { text: "Read for one hour",
       isCompleted: false,
+      id: 3
     },
     { text: "Pick up groceries",
       isCompleted: false,
+      id: 4
     },
     { text: "Complete Todo App on Frontend Mentor",
       isCompleted: false, 
+      id: 5
     },
   ]);
+
+  const randomId = () => {
+    const id = Math.floor(Math.random() * 1000);
+    if (todos.length === 0) {
+      return 1;
+    }
+    // check if generated id already exists
+    if (todos.some(item => item.id === id)) {
+      return randomId();
+    }
+    return id;
+  };
+
   
-  const addTodo = (text, isCompleted=false) => {
-    const newTodos = [...todos, { text, isCompleted}];
+  const addTodo = (text, id, isCompleted=false) => {
+    id = randomId();
+    const newTodos = [...todos, { text, isCompleted, id}];
     setTodos(newTodos);
+    console.log(newTodos);
     
   };
   
@@ -46,16 +66,20 @@ function App() {
     setTodos(newTodos);
   }
 
-  const handleCompleted = index => {
-    const newTodos = [...todos];
-    if(newTodos[index].isCompleted === false) {
-      newTodos[index].isCompleted = true
-    } else {
-      newTodos[index].isCompleted = false
-    }
-    setTodos(newTodos); 
-    console.log(newTodos)
+  const updateCheckTodo = id => {
+
+    const updatedTodos = todos.map(todo => {
+      if (todo.id === id) {
+        todo.isCompleted = !todo.isCompleted;
+        return todo;
+       
+      }
+      return todo;
+    });
+    setTodos(todos => updatedTodos);
+
   };
+
 
   const isCompletedCount = () => {
     const completedCount = todos.filter(function(s) { return s.isCompleted; }).length;
@@ -93,7 +117,8 @@ function App() {
             key={index}
             index={index}
             todo={todo}
-            handleCompleted={handleCompleted}
+            id={todo.id}
+            updateCheckTodo={updateCheckTodo}
 
           />
         ))}
