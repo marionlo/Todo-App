@@ -1,12 +1,12 @@
 import React from 'react';
 import cross from '../img/icon-cross.svg'
 
-function Todo({ todo, index, handleRemoveItem, updateCheckTodo, id }) {
+function Todo({ todo, index, handleRemoveItem, updateTodo, id }) {
 
   
     return (
       <li className="todo-item">
-      <button className={todo.isCompleted ? 'todo-circle button-check-completed' : 'todo-circle button-check'} onClick={() => {updateCheckTodo(id);}}>
+      <button className={todo.isCompleted ? 'todo-circle button-check-completed' : 'todo-circle button-check'} onClick={() => {updateTodo(id);}}>
       </button>
         <div className={todo.isCompleted ? 'todo-input todo-input-completed' : 'todo-input'}>{todo.text}</div>
         <button className="btn-delete" >

@@ -66,7 +66,7 @@ function App() {
     setTodos(newTodos);
   }
 
-  const updateCheckTodo = id => {
+  const updateTodo = id => {
 
     const updatedTodos = todos.map(todo => {
       if (todo.id === id) {
@@ -118,7 +118,7 @@ function App() {
             index={index}
             todo={todo}
             id={todo.id}
-            updateCheckTodo={updateCheckTodo}
+            updateTodo={updateTodo}
 
           />
         ))}
