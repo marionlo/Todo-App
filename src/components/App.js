@@ -16,9 +16,8 @@ const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 function App() {
   const [filter, setFilter] = useState('All');
-  const [darkTheme, setDarkTheme] = React.useState(false)
+  const [darkTheme, setDarkTheme] = React.useState(getDefaultTheme())
 
-  
   const [todos, setTodos] = React.useState([
     { text: "Complete online Javascript Course",
       isCompleted: true, 
@@ -106,11 +105,10 @@ function App() {
       name={name}
       isPressed={name === filter}
       setFilter={setFilter}
-    />
-
+      />
   ));
 
-  // Local Storage
+  // Local Storage - store todos
   useEffect(()=>{
     const data = localStorage.getItem('data')
     
@@ -122,8 +120,16 @@ function App() {
     useEffect(()=>{ 
       localStorage.setItem('data',JSON.stringify(todos)) 
     })
-    
 
+  // Local Storage - Theme mode
+    useEffect(() => {
+      localStorage.setItem('dark', JSON.stringify(darkTheme))
+    }, [darkTheme])
+    
+    function getDefaultTheme() {
+      const selectedTheme = JSON.parse(localStorage.getItem('dark'))
+      return selectedTheme || false
+    }
 
   return (
     <div className={darkTheme ? 'theme dark-theme' : 'theme light-theme'}>

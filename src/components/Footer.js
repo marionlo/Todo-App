@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function Footer({todos, notCompletedCount, handleRemoveCompleted, filterList, darkTheme }) {
+function Footer({notCompletedCount, handleRemoveCompleted, filterList, darkTheme }) {
     
     return (
     <div>

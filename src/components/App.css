@@ -488,3 +488,9 @@ body {
 .items-completed {
   cursor: pointer;
 }
+
+
+
+.filter-button[aria-pressed="true"] {
+  color: hsl(220, 98%, 61%);
+}
