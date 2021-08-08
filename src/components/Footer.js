@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function Footer({todos, isCompletedCount, handleRemoveCompleted, filterList }) {
+function Footer({todos, isCompletedCount, handleRemoveCompleted, filterList, darkTheme }) {
     
     
     const todosNumber = todos.length;
@@ -11,14 +11,14 @@ function Footer({todos, isCompletedCount, handleRemoveCompleted, filterList }) {
 
     return (
     <div>
-        <div className="items-menu">
+        <div className={darkTheme ? "items-menu todo-list-dark" : "items-menu todo-list-light"}>
             <div className="items-left" id="items-left"> {newNumber} items left</div>
             <div className="items-sort">
             {filterList}
         </div>
             <div className="items-clear" onClick={() => handleRemoveCompleted()}>Clear Completed</div>
     </div>
-        <section className="items-reorder">
+    <section className="items-reorder">
             <div>Drag and drop to reorder list</div>
         </section>
     </div>

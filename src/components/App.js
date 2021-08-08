@@ -5,6 +5,7 @@ import Footer from './Footer';
 import './App.css';
 import FilterButton from './FilterButton';
 
+
 const FILTER_MAP = {
   All: () => true,
   Active: todos => !todos.isCompleted,
@@ -15,27 +16,33 @@ const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 function App() {
   const [filter, setFilter] = useState('All');
+  const [darkTheme, setDarkTheme] = React.useState(false)
+
   
   const [todos, setTodos] = React.useState([
-    { text: "Jog around the park 3x",
+    { text: "Complete online Javascript Course",
       isCompleted: true, 
       id: 1
     },
-    { text: "10 minutes meditation",
+    { text: "Jog around the park 3x",
       isCompleted: true, 
       id: 2
     },
-    { text: "Read for one hour",
-      isCompleted: false,
+    { text: "10 minutes meditation",
+      isCompleted: false, 
       id: 3
     },
-    { text: "Pick up groceries",
+    { text: "Read for 1 hour",
       isCompleted: false,
       id: 4
     },
+    { text: "Pick up groceries",
+      isCompleted: false,
+      id: 5
+    },
     { text: "Complete Todo App on Frontend Mentor",
       isCompleted: false, 
-      id: 5
+      id: 6
     },
   ]);
 
@@ -119,9 +126,11 @@ function App() {
 
 
   return (
+    <div className={darkTheme ? 'theme dark-theme' : 'theme light-theme'}>
     <div className="main">
-      <Header addTodo={addTodo}/>
-      <ul className="todo-list"  id="todo-list">
+      <Header addTodo={addTodo} setDarkTheme={setDarkTheme} darkTheme={darkTheme} />
+      <div>
+      <ul className={darkTheme ? 'todo-list todo-list-dark' : 'todo-list todo-list-light'}  id="todo-list">
         {todos.filter(FILTER_MAP[filter]).map((todo, index) => (
           <Todo
             handleRemoveItem={handleRemoveItem}
@@ -132,13 +141,15 @@ function App() {
             todo={todo}
             id={todo.id}
             updateTodo={updateTodo}
+            setDarkTheme={setDarkTheme} 
+            darkTheme={darkTheme}
 
           />
         ))}
       </ul>
-      <div className="items-sort">
+      <Footer todos={todos} isCompletedCount={isCompletedCount} handleRemoveCompleted={handleRemoveCompleted} filterList={filterList} darkTheme={darkTheme} />
       </div>
-      <Footer todos={todos} isCompletedCount={isCompletedCount} handleRemoveCompleted={handleRemoveCompleted} filterList={filterList} />
+    </div>
     </div>
   );
   
