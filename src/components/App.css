@@ -346,8 +346,10 @@ body {
 
 .button-check {
   background: transparent;
+  cursor: pointer;
 }
 .button-check-completed {
+  cursor: pointer;
   background: linear-gradient(
     to right,
     hsl(192, 100%, 67%),

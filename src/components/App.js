@@ -71,19 +71,18 @@ function App() {
     const updatedTodos = todos.map(todo => {
       if (todo.id === id) {
         todo.isCompleted = !todo.isCompleted;
-        return todo;
-       
+        return todo;       
       }
       return todo;
     });
-    setTodos(todos => updatedTodos);
-
+    
+    setTodos(updatedTodos);
   };
 
 
   const isCompletedCount = () => {
     const completedCount = todos.filter(function(s) { return s.isCompleted; }).length;
-     return completedCount;
+    return completedCount;
   }
 
   const handleRemoveCompleted = () => {
@@ -103,6 +102,20 @@ function App() {
     />
 
   ));
+
+  // Local Storage
+  useEffect(()=>{
+    const data = localStorage.getItem('data')
+    
+    if(data){
+      setTodos(JSON.parse(data))
+     }
+    
+    },[])  
+    useEffect(()=>{ 
+      localStorage.setItem('data',JSON.stringify(todos)) 
+    })
+    
 
 
   return (
