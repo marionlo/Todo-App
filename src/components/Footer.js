@@ -1,18 +1,12 @@
 import React from 'react';
 
 
-function Footer({todos, isCompletedCount, handleRemoveCompleted, filterList, darkTheme }) {
+function Footer({todos, notCompletedCount, handleRemoveCompleted, filterList, darkTheme }) {
     
-    
-    const todosNumber = todos.length;
-    const completedNumber = isCompletedCount();
-    const newNumber = todosNumber - completedNumber;
-
-
     return (
     <div>
         <div className={darkTheme ? "items-menu todo-list-dark" : "items-menu todo-list-light"}>
-            <div className="items-left" id="items-left"> {newNumber} items left</div>
+            <div className="items-left" id="items-left"> {notCompletedCount()} items left</div>
             <div className="items-sort">
             {filterList}
         </div>

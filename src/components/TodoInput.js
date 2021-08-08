@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TodoInput({ addTodo }) {
+function TodoInput({ addTodo, darkTheme }) {
     const [value, setValue] = React.useState("");
   
     const handleSubmit = e => {
@@ -11,10 +11,10 @@ function TodoInput({ addTodo }) {
     };
   
     return (
-      <form onSubmit={handleSubmit} id="submit-form">
+      <form onSubmit={handleSubmit} id="submit-form" >
         <input
           type="text"
-          className="todo-input" id="new-todo" placeholder="Create a new todo..." minLength="1" maxLength="300"
+          className={darkTheme ? 'todo-input todo-input-dark' : 'todo-input todo-input-light'} id="new-todo" placeholder="Create a new todo..." minLength="1" maxLength="300"
           value={value}
           onChange={e => setValue(e.target.value)}
         />

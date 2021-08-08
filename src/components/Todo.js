@@ -1,5 +1,6 @@
 import React from 'react';
 import cross from '../img/icon-cross.svg'
+import check from '../img/icon-check.svg'
 
 function Todo({ todo, index, handleRemoveItem, updateTodo, id, darkTheme }) {
 
@@ -20,7 +21,7 @@ function Todo({ todo, index, handleRemoveItem, updateTodo, id, darkTheme }) {
   const todoStatusButton = () => {
     if(todo.isCompleted && !darkTheme) {
       return(
-        <button className="todo-circle button-check-completed" onClick={() => {updateTodo(id);}}></button>
+        <button className="todo-circle button-check-completed" onClick={() => {updateTodo(id);}}><img src={check} alt="Todo completed"/></button>
       )
     } else if (!todo.isCompleted && !darkTheme) {
       return (
@@ -33,7 +34,7 @@ function Todo({ todo, index, handleRemoveItem, updateTodo, id, darkTheme }) {
       )
     } else if (todo.isCompleted && darkTheme) {
       return (
-        <button className="todo-circle button-check-completed" onClick={() => {updateTodo(id);}}></button>
+        <button className="todo-circle button-check-completed" onClick={() => {updateTodo(id);}}><img src={check} alt="Todo completed"/></button>
       )
     } else {
       return (
@@ -45,8 +46,7 @@ function Todo({ todo, index, handleRemoveItem, updateTodo, id, darkTheme }) {
   
     return (
       <li className={darkTheme ? 'todo-item todo-item-dark' : 'todo-item todo-item-light'}>
-     {todoStatusButton()}
-
+      {todoStatusButton()}
       {todoStatus()}
         <button className="btn-delete" >
           <img src={cross} alt="" onClick={() => handleRemoveItem(index)}/>

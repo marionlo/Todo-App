@@ -18,7 +18,7 @@ function Header({addTodo, setDarkTheme, darkTheme}) {
           <div className={darkTheme ? "todo-circle todo-circle-dark" : "todo-circle todo-circle-light"}>
           </div>
           
-          <TodoInput addTodo={addTodo} />
+          <TodoInput addTodo={addTodo} darkTheme={darkTheme} />
       
         </div>
       </header>

@@ -87,9 +87,9 @@ function App() {
   };
 
 
-  const isCompletedCount = () => {
-    const completedCount = todos.filter(function(s) { return s.isCompleted; }).length;
-    return completedCount;
+  const notCompletedCount = () => {
+    const completedCount = todos.filter(function(s) { return !s.isCompleted; }).length;
+    return completedCount
   }
 
   const handleRemoveCompleted = () => {
@@ -147,7 +147,7 @@ function App() {
           />
         ))}
       </ul>
-      <Footer todos={todos} isCompletedCount={isCompletedCount} handleRemoveCompleted={handleRemoveCompleted} filterList={filterList} darkTheme={darkTheme} />
+      <Footer todos={todos} notCompletedCount={notCompletedCount} handleRemoveCompleted={handleRemoveCompleted} filterList={filterList} darkTheme={darkTheme} />
       </div>
     </div>
     </div>
