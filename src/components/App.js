@@ -138,7 +138,7 @@ function App() {
       const items = Array.from(todos);
       const [reorderedTodos] = items.splice(result.source.index, 1);
       items.splice(result.destination.index, 0, reorderedTodos);
-      setTodos(items);     
+      setTodos(items);  
     }
 
   return (
@@ -151,7 +151,7 @@ function App() {
     {(provided) => (
       <ul className={darkTheme ? 'todo-list todo-list-dark' : 'todo-list todo-list-light'}  id="todo-list" {...provided.droppableProps} ref={provided.innerRef}>
         {todos.filter(FILTER_MAP[filter]).map((todo, index) => (
-          <Draggable key={todo.id} draggableId={todo.text} index={index} >
+          <Draggable key={todo.id} draggableId={`${todo.id}`} index={index} >
           {(provided) => (
           <Todo
             handleRemoveItem={handleRemoveItem}
