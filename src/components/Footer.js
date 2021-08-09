@@ -14,6 +14,7 @@ function Footer({notCompletedCount, handleRemoveCompleted, filterList, darkTheme
     </div>
     <section className="items-reorder">
             <div>Drag and drop to reorder list</div>
+            <div className="copyright">Coded by <a href="https://github.com/marionlo/">Marion L.</a></div>
         </section>
     </div>
 
