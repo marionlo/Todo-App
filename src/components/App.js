@@ -134,11 +134,12 @@ function App() {
     }
 
     function handleOnDragEnd(result) {
+      if (!result.destination) return;
       const items = Array.from(todos);
       const [reorderedTodos] = items.splice(result.source.index, 1);
       items.splice(result.destination.index, 0, reorderedTodos);
-
       setTodos(items);
+      
     }
 
   return (
