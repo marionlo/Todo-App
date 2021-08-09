@@ -1,8 +1,9 @@
 import React from 'react';
 import cross from '../img/icon-cross.svg'
 import check from '../img/icon-check.svg'
+;
 
-function Todo({ todo, index, handleRemoveItem, updateTodo, id, darkTheme }) {
+function Todo({ todo, index, handleRemoveItem, updateTodo, id, darkTheme, provided }) {
 
  const todoStatus = () => {
     if(todo.isCompleted && !darkTheme) {
@@ -45,7 +46,8 @@ function Todo({ todo, index, handleRemoveItem, updateTodo, id, darkTheme }) {
 
   
     return (
-      <li className={darkTheme ? 'todo-item todo-item-dark' : 'todo-item todo-item-light'}>
+      
+      <li className={darkTheme ? 'todo-item todo-item-dark' : 'todo-item todo-item-light'} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
       {todoStatusButton()}
       {todoStatus()}
         <button className="btn-delete" >

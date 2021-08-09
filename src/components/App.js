@@ -5,6 +5,8 @@ import Footer from './Footer';
 import './App.css';
 import FilterButton from './FilterButton';
 
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+
 
 const FILTER_MAP = {
   All: () => true,
@@ -121,7 +123,7 @@ function App() {
       localStorage.setItem('data',JSON.stringify(todos)) 
     })
 
-  // Local Storage - Theme mode
+  // Local Storage - Theme mode 
     useEffect(() => {
       localStorage.setItem('dark', JSON.stringify(darkTheme))
     }, [darkTheme])
@@ -131,18 +133,31 @@ function App() {
       return selectedTheme || false
     }
 
+    function handleOnDragEnd(result) {
+      const items = Array.from(todos);
+      const [reorderedTodos] = items.splice(result.source.index, 1);
+      items.splice(result.destination.index, 0, reorderedTodos);
+
+      setTodos(items);
+    }
+
   return (
     <div className={darkTheme ? 'theme dark-theme' : 'theme light-theme'}>
     <div className="main">
       <Header addTodo={addTodo} setDarkTheme={setDarkTheme} darkTheme={darkTheme} />
       <div>
-      <ul className={darkTheme ? 'todo-list todo-list-dark' : 'todo-list todo-list-light'}  id="todo-list">
+      <DragDropContext  onDragEnd={handleOnDragEnd}>
+      <Droppable droppableId="list">
+    {(provided) => (
+      <ul className={darkTheme ? 'todo-list todo-list-dark' : 'todo-list todo-list-light'}  id="todo-list" {...provided.droppableProps} ref={provided.innerRef}>
         {todos.filter(FILTER_MAP[filter]).map((todo, index) => (
+          <Draggable key={todo.id} draggableId={todo.text} index={index} >
+          {(provided) => (
           <Todo
             handleRemoveItem={handleRemoveItem}
             todos={todos}
             setTodos={setTodos}
-            key={index}
+            provided={provided}
             index={index}
             todo={todo}
             id={todo.id}
@@ -151,8 +166,14 @@ function App() {
             darkTheme={darkTheme}
 
           />
+          )}
+          </Draggable>
         ))}
+        {provided.placeholder}
       </ul>
+      )}
+      </Droppable>
+      </DragDropContext>
       <Footer todos={todos} notCompletedCount={notCompletedCount} handleRemoveCompleted={handleRemoveCompleted} filterList={filterList} darkTheme={darkTheme} />
       </div>
     </div>
