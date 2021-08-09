@@ -12,6 +12,7 @@ This is a responsive Todo App that I created using mainly React Hooks. The diffe
 ## Installation
 
 > Install all project dependencies with `npm install`
+> 
 > Start the development server with `npm start`
 
 ## Features
