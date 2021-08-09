@@ -264,7 +264,8 @@ body {
   background-attachment: fixed;
   background-position: top center;
   background-size: contain;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
 }
 
 .light-theme {
@@ -296,8 +297,8 @@ body {
 }
 
 .todo-circle {
-  width: 24px;
-  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
   border-radius: 50%;
   margin-left: 25px;
   
@@ -434,6 +435,7 @@ body {
   color: hsl(236, 9%, 61%);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  position: relative;
 }
 
 .items-sort {
@@ -474,8 +476,72 @@ body {
   cursor: pointer;
 }
 
-
-
 .filter-button[aria-pressed="true"] {
   color: hsl(220, 98%, 61%);
+}
+
+
+@media screen and (max-width: 700px) {
+  .logo {
+    font-size: 1.6rem;
+  }
+
+  .todo-input {
+    font-size: 12px;
+    margin-left: 10px;
+    width: 100%;
+  }
+
+  .add-todo {
+    min-height: 50px;
+  }
+
+  .todo-item {
+    min-height: 50px;
+  }
+
+  .site-mode img {
+    width: 20px;
+  }
+  .light-theme {
+    background-image: url("../img/bg-mobile-light.jpg");
+    background-color: hsl(236, 33%, 92%);  
+  }
+  
+  .dark-theme {
+    background-image: url("../img/bg-mobile-dark.jpg"); 
+    background-color: hsl(235, 21%, 11%);
+  }
+
+  .main {
+    max-width: 550px;
+    padding: 0 20px;
+    padding-top: 26px;
+  }
+
+  .todo-list {
+    margin-top: 20px;
+  }
+
+  .items-menu {
+    font-size: 12px;
+  }
+
+  .items-sort {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    top: 4.5em;
+    left: 0;
+    position: absolute;
+    font-size: 14px;
+    }
+
+    .items-reorder {
+      padding-top: 110px;
+      padding-bottom: 70px;
+}
 }

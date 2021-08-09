@@ -63,9 +63,7 @@ function App() {
   const addTodo = (text, id, isCompleted=false) => {
     id = randomId();
     const newTodos = [...todos, { text, isCompleted, id}];
-    setTodos(newTodos);
-    console.log(newTodos);
-    
+    setTodos(newTodos);  
   };
   
   const handleRemoveItem = (index) => {
@@ -133,13 +131,14 @@ function App() {
       return selectedTheme || false
     }
 
+  
+    // Drag and drop
     function handleOnDragEnd(result) {
       if (!result.destination) return;
       const items = Array.from(todos);
       const [reorderedTodos] = items.splice(result.source.index, 1);
       items.splice(result.destination.index, 0, reorderedTodos);
-      setTodos(items);
-      
+      setTodos(items);     
     }
 
   return (
@@ -147,7 +146,7 @@ function App() {
     <div className="main">
       <Header addTodo={addTodo} setDarkTheme={setDarkTheme} darkTheme={darkTheme} />
       <div>
-      <DragDropContext  onDragEnd={handleOnDragEnd}>
+      <DragDropContext onDragEnd={handleOnDragEnd}>
       <Droppable droppableId="list">
     {(provided) => (
       <ul className={darkTheme ? 'todo-list todo-list-dark' : 'todo-list todo-list-light'}  id="todo-list" {...provided.droppableProps} ref={provided.innerRef}>

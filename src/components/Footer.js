@@ -7,7 +7,7 @@ function Footer({notCompletedCount, handleRemoveCompleted, filterList, darkTheme
     <div>
         <div className={darkTheme ? "items-menu todo-list-dark" : "items-menu todo-list-light"}>
             <div className="items-left" id="items-left"> {notCompletedCount()} items left</div>
-            <div className="items-sort">
+            <div className={darkTheme ? "items-sort todo-list-dark" : "items-sort todo-list-light"}>
             {filterList}
         </div>
             <div className="items-clear" onClick={() => handleRemoveCompleted()}>Clear Completed</div>
