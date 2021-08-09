@@ -10,7 +10,8 @@ This is a responsive Todo App that I created using mainly React Hooks. The diffe
 * [Links](#links)
 
 ## Installation
-
+> Clone the repository
+> 
 > Install all project dependencies with `npm install`
 > 
 > Start the development server with `npm start`
