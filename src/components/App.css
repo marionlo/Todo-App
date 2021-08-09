@@ -476,8 +476,18 @@ body {
   cursor: pointer;
 }
 
+
+
 .filter-button[aria-pressed="true"] {
   color: hsl(220, 98%, 61%);
+}
+
+.todo-list-dark .filter-button[aria-pressed="false"]:hover, .todo-list-dark .items-clear:hover  {
+  color: hsl(234, 39%, 85%);
+}
+
+.todo-list-light .filter-button[aria-pressed="false"]:hover, .todo-list-light .items-clear:hover {
+  color: hsl(235, 19%, 35%);
 }
 
 
@@ -543,5 +553,10 @@ body {
     .items-reorder {
       padding-top: 110px;
       padding-bottom: 70px;
+}
+
+.todo-item:hover .btn-delete {
+  transform: scale(0.7);
+  margin-right: 10px;
 }
 }
