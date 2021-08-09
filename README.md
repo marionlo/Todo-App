@@ -39,4 +39,4 @@ This is a responsive Todo App that I created using mainly React Hooks. The diffe
 
 ## Links
 
-- Live Site URL: [Add live site URL here](https://zen-joliot-042bfd.netlify.app/)
+- Live Site URL: [https://zen-joliot-042bfd.netlify.app](https://zen-joliot-042bfd.netlify.app/)
