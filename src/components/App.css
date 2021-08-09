@@ -560,13 +560,13 @@ body {
     font-size: 14px;
     }
 
-    .items-reorder {
-      padding-top: 110px;
-      padding-bottom: 70px;
+  .items-reorder {
+    padding-top: 110px;
+    padding-bottom: 70px;
 }
 
-.todo-item:hover .btn-delete {
-  transform: scale(0.7);
-  margin-right: 10px;
-}
+  .todo-item:hover .btn-delete {
+    transform: scale(0.7);
+    margin-right: 10px;
+  }
 }
